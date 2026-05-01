@@ -65,6 +65,3 @@ Huge thanks to the original creator for the amazing foundation! ❤️
   </table>
   <br />
 </div>
-
----
-*Note: This is a fork of the original newHelper.js project, updated and polished for better use.*
