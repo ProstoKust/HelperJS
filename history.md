@@ -1,31 +1,29 @@
-История newHelper.js
-# 1.7
-### 01:06:2024 как часть GDPS Helper
-Всё берётся с GDPS Helper 1.6. Само по себе обновление 1.6 дало мне базу работы с javascript чтобы я потом выпустил 1.7, которая уже реально использует наработки ставшие первой весией newHelper.js:
-- helperRequest (нынеший _.http)
-- примитивная интерационализация, с сохранением всех пакетов в глобальном объекте (нынешний _.lang)
+# HelperJS History
 
-# 1.8
-### 24:08:2024 как часть GDPS Helper
-Эта версия привнесла обновленную систему локализации, она стала походить на нынешний _.lang из-за скачивания json с сервера
+HelperJS is a fork of [newHelper.js](https://github.com/MIOBOMB/newHelper-js), an ultra-lightweight library for building administrative panels and UI components.
 
-# 1.9
-### 17:11:2024 как часть GDPS Helper
-- Появилася helperStorage, класс-обёртка над localStorage (нынешний _.storage, но тогда принимал только localStorage)
-- Добавлена функция loadScript, которая позже станет частью _.lazy.load
+## Fork Details
+- **Original Project**: [newHelper.js](https://github.com/MIOBOMB/newHelper-js)
+- **Original Author**: MIOBOMB
 
-# 2.0
-### 20:05:2025 как часть Object hub
-- Инкапсуляция всего в $ (ранее было 30+ глобальных переменных в коде)
-- Движок окон в почти полном его виде
-- глобальный error handler который указывает точную строку с ошибкой (иногда может работать не совсем правильно)
-- самописная и лёгкая система lazy load
-- Создание конфиг скрипта в котором можно изменять некоторые базовые значения newHelper.js без прямой перезаписи функций
+---
 
-# 2.1
-### 23:02:2026 как самостоятельная библиотека
-- Перенос $ в _
-- Дополнение движка окон возможностью переименовать окно
-- Движок горячих клавиш
-- DOM хелперы (_.$, _.http)
-- Минимизация размера кода (2.0.1 29.4 кб => 2.1 13.6 кб)
+## Versions
+
+### 2.1.8 (Current)
+- **Transition to HelperJS**: Completed renaming and project rebranding.
+- **English Translation**: All source code comments and documentation fully translated to English.
+- **Code Refactoring**:
+    - `tables.render()` refactored to use modern `map()` and `join()` methods for better performance and readability.
+    - `pipe` and `pipeAsync` simplified using the `reduce()` pattern.
+    - Minor logic improvements and cleanup throughout the core.
+- **Project Structure**: Consolidated documentation and removed legacy project mentions.
+
+### 2.1.5 (Original)
+- The last state of the original **newHelper.js** project before forking.
+- This version featured the core "modular monolith" architecture, including:
+    - Advanced window engine.
+    - Custom hotkeys system.
+    - Router and lazy loading modules.
+    - Lightweight i18n and XHR-based HTTP client.
+- Original project by [MIOBOMB](https://github.com/MIOBOMB).

@@ -1,33 +1,70 @@
-# newHelper.js
-Наш дискорд сервер!  
-Our discord server!  
-https://discord.gg/zetb62mqsS (newHelper.js dev)  
-Сейчас передо мной стоит вопрос - делать ли движок плагинов? и если делать выносить движок окон в внешний плагин?  
+# HelperJS
 
-- [english version](README-en.md)
-- [документация](docs.md)
-- Библиотека для создания сверхлёгких но очень функциональных админ панелей, один из лучших примеров Object hub, Общий бандл всего сайта составляет всего 280 кб чистого кода, внутренная админ панель со всем html+css+js весит всего 25 килобайт (при gzip размер ещё ниже). Я стараюсь придерживать библиотеку в состоянии "Модульного монолита".
-Текущая версия - 2.1.2, с хорошей документацией в коде
-## Модули в комплекте
-- Широкий движок окон (ресайз, разворот на весь экран, taskbar, 6.29 кб)
-- Удобные горячие клавиши (press/release колбеки, 1.16 кб)
-- Роутер (1.48 кб)
-- Ультралёгкий аналог i18n (1.30 кб)
-- Самописный lazy-load (0.97 кб)
-- Модуль отлова ошибок (0.54 кб)
-- Простой http клиент с прогрессом загрузки файлов (0.82 кб)
-- DOM-хелперы (0.61 кб)
-- Изоляция над Storage (0.31 кб)
+Hey! Welcome to **HelperJS**. This is a super lightweight library I'm working on to help build admin panels and cool web interfaces without all the heavy stuff like React or complex builders.
 
-## Особенности
-- Библиотека использует классическое подключение с тегом script и не требует никаких сборщиков/компиляторов. Но если очень хочется вы можете настроить его, но зачем? это же ассемблер из мира веб
-- Зависимости? неа, это ванильный ES8
-- Указанный в начале размер библиотеки является размером исходного кода, так что минификация+gzip уменьшат размер ещё сильнее
-- Из-за минималистичности кода вы можете спокойно переопределить любой встроенный метод под свои нужны. В крайнем случае можно прибегнуть к модификации кода библиотеки, но такое мы не рекомендуем делать в случае если вы собираетесь обновляться до самых последних версий
-- Весь код написан внутри одного "_" и использованием всего трёх глобальных читателей событий. Из-за этого конфликты с остальными библиотеками минимальны, если вы готовы то можете пробовать запустить newHelper вместе с jQuery или если вы очень хотите реактивность то пробуйте в связке с ультралёгкими реактивными фреймворками (у меня на слуху из адекватных alpine.js)
-- Если вы последователь "14 килобайтных сайтов" то можете смело прогнать библиотеку через минификатор, минифицированный код библиотеки не должен весить больше 5 килобайт, а если отбросить ненужные вам модули и то меньше (например код движка окон составляет приблизительно 50% всего кода библиотеки, если вам не нужен движок окон - оставляйте 2 килобайта gzip-ядра)
-- Если вы научитесь грамотно использовать ленивую загрузку, то ваши и без того лёгкие сайты станут в разы легче (тот же стартовый трафик Object Hub уменьшился 330кб до 180кб при старте из-за разбития всего на lazyload модули)
-- На базе этой библиотеки работает парочка моих сайтов не связанных с админ панелями - GDPS Helper (каталог приватных серверов geometry dash, но там тоже идёт админка для демонлистов), Object hub (каталог с элементами вики движка и hr-платформы для OSC сообщества, вики движок во всю использует окна вместо костылей mediawiki). Если захотеть можно не только админку за 2 часа собрать, но и написать мегасайт за пару недель
-- Библиотека родилась 3 года назад как внутренний инструмент веб сайта GDPS Helper, развивалась она из-за презрения к тяжеловесности react, позже исходный код GDPS Helper стал основоположником Object Hub, в процессе развития которого как раз таки и появились движок окон, горячих клавиш, и более мощная ленивая загрузка
-- Я как разработчик стараюсь следовать философии Unix систем, как пример простота превыше сложности - в коде всего 600 строк кода, или модульность, пусть у меня модули и чуть чуть связаны но каждый модуль отвечает за свою вещь
-- Продолжая прошлый пункт, вы можете использовать newHelper.js везде и всюду, его применение ограничено лишь вашей фантазией, хотите сделать классную админку? либа на это и целится. хотите написать полноценный веб форум? если вы ещё помните GDPS Helper или Object hub это вполне возможно. хотите написать свой фронтенд к Яндекс API? если у вас много времени пожалуйста
+It's basically a "modular monolith" - everything you need is in one place, but you only use what you want. The whole thing is tiny (only about 13KB minified!), so it's perfect if you want your site to load fast.
+
+## Why I made this?
+I wanted something simple. No npm install (unless you want to), no webpack, no complicated stuff. Just a simple script that gives you windows, routing, hotkeys, and translations out of the box.
+
+## Cool stuff included:
+- **Windows Engine**: Real windows you can drag, resize, and minimize!
+- **Hotkeys**: Easy shortcuts for your web app.
+- **Router**: Simple page navigation using the URL.
+- **Lazy Loading**: Load only the code you need, when you need it.
+- **i18n**: Translate your app on the fly.
+- **HTTP Client**: A simple way to talk to your backend with upload progress.
+
+## How to use it?
+Just include `helper.js` in your HTML:
+
+```html
+<script src="helper.js"></script>
+<script>
+  // Initialize the helper
+  const _ = Intl.helper();
+  
+  // Open a window just to see it work!
+  _.win.open('Hello', '<h1>Welcome to my app!</h1>');
+</script>
+```
+
+## Documentation
+- [Full API Docs](docs.md)
+- [Project History](history.md)
+
+## License
+This project is licensed under the **BSD 2-Clause License**. It means you can use it for whatever you want, just keep my name in the license file!
+
+## Credits
+
+Special thanks to the people who made this project possible:
+
+Huge thanks to the original creator for the amazing foundation! ❤️
+
+<div align="left">
+  <br />
+  <table>
+    <tr>
+      <!-- Card MIOBOMB -->
+      <td width="260" align="left">
+        <img src="https://github.com/MIOBOMB.png" width="70" align="left" style="margin-right: 15px; border: 1px solid #ddd; border-radius: 10px;" />
+        <a href="https://github.com/MIOBOMB"><b>MIOBOMB</b></a>
+        <br /><br />
+        <sub>Original Creator</sub>
+      </td>
+      <td width="20"></td>
+      <!-- Card Prosto_Kust -->
+      <td width="260" align="left">
+        <img src="https://github.com/prostokust.png" width="70" align="left" style="margin-right: 15px; border: 1px solid #ddd; border-radius: 10px;" />
+        <a href="https://github.com/prostokust"><b>Prosto_Kust</b></a>
+        <br /><br />
+        <sub>Lead Developer</sub>
+      </td>
+    </tr>
+  </table>
+  <br />
+</div>
+
+---
+*Note: This is a fork of the original newHelper.js project, updated and polished for better use.*

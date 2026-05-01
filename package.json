@@ -1,7 +1,7 @@
 {
-  "name": "newhelper-js",
-  "version": "2.1.5",
-  "description": "сверх лёгкая библиотека для построения админок",
+  "name": "helperjs",
+  "version": "2.1.8",
+  "description": "Lightweight UI library",
   "keywords": [
     "admin",
     "ui",
@@ -19,27 +19,26 @@
     "frontend",
     "zero-dependencies"
   ],
-  "homepage": "https://github.com/MIOBOMB/newHelper-js#readme",
+  "homepage": "https://github.com/prostokust/helperjs#readme",
   "bugs": {
-    "url": "https://github.com/MIOBOMB/newHelper-js/issues"
+    "url": "https://github.com/prostokust/helperjs/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MIOBOMB/newHelper-js.git"
+    "url": "git+https://github.com/prostokust/helperjs.git"
   },
   "license": "BSD-2-Clause",
-  "author": "MIOBOMB",
+  "author": "Prosto_Kust",
   "type": "commonjs",
-  "main": "newHelper.js",
+  "main": "helper.js",
   "files": [
-    "newHelper.js",
+    "helper.js",
     "README.md",
-    "README-en.md",
     "docs.md",
     "history.md"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "unpkg": "newHelper.js"
+  "unpkg": "helper.js"
 }
