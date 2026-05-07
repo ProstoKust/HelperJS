@@ -34,7 +34,7 @@ Just include `helper.js` in your HTML:
 - [Project History](history.md)
 
 ## License
-This project is licensed under the **BSD 2-Clause License**. It means you can use it for whatever you want, just keep my name in the license file!
+This project is licensed under the **MIT License**. It means you can use it for whatever you want, just keep the license notice in your project!
 
 ## Credits
 

@@ -27,7 +27,7 @@
     "type": "git",
     "url": "git+https://github.com/prostokust/helperjs.git"
   },
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "author": "Prosto_Kust",
   "type": "commonjs",
   "main": "helper.js",
