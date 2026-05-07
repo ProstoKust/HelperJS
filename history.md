@@ -10,7 +10,16 @@ HelperJS is a fork of [newHelper.js](https://github.com/MIOBOMB/newHelper-js), a
 
 ## Versions
 
-### 2.1.8 (Current)
+### 2.2.0 (Current)
+- **Upstream Sync**: Ported dynamic routing and code optimizations from `newHelper.js` 2.1.7.
+- **Dynamic Routing**: Added support for `:` parameter syntax in the `link` module.
+- **Window Management**: Solidified the `new Map()` implementation for `wins` to improve scalability.
+- **Optimized Core**:
+    - `pipeAsync` rewritten for better readability and slightly improved performance.
+    - Internal documentation refined and updated to reflect the 2.2.0 architecture.
+- **Cleanup**: Removed remaining legacy project mentions and standardized module comments.
+
+### 2.1.8
 - **Transition to HelperJS**: Completed renaming and project rebranding.
 - **English Translation**: All source code comments and documentation fully translated to English.
 - **Code Refactoring**:

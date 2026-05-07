@@ -6,7 +6,7 @@ HelperJS is an ultra-lightweight UI library. Everything is contained within the 
 Handles URL-based routing and commands.
 - `set(page, title)`: Navigate to a page.
 - `add(cmd)` / `remove(cmd)`: Manage command flags in URL.
-- `get()`: Process current URL and trigger actions/commands.
+- `get()`: Process current URL and trigger actions/commands. Supports **dynamic routing** (e.g., `user/:id` will pass `id` as an argument to the action).
 
 ## Lazy Loader (`_.lazy`)
 Loads scripts on demand.

@@ -1,5 +1,5 @@
 /*
- * You are looking at helper.js version 2.1.8. It is built on a factory
+ * You are looking at helper.js version 2.2.0. It is built on a factory
  * that starts with Intl.helper=function(){...};
  * The reason for using Intl.helper is quite simple:
  * Instead of polluting the global scope with a semi-flexible variable,
@@ -13,14 +13,11 @@
  * !!! - pay attention
  * See also - read to understand how it works
  * 
- * ???: consider switching to ES6 exports instead of injecting into Intl
- * 
- * New modules, preparing for release in 2.2
- * Their API might be slightly unstable:
- * tables - under refactoring
+ * New modules in release 2.2:
+ * link (patched with dynamic routing)
  * form
  * drag (ported from windows)
- * pipe/pipeAsync
+ * pipe/pipeAsync (optimized)
  * In 2.2 plugins will appear, some core modules will be extracted into plugins:
  * win (in 2.2)
  * tables (might not be part of core, but useful in admin panels)
@@ -144,18 +141,35 @@ Intl.helper = function () {
 					[firstKey, fisrtValue] = links[0].split('='),
 					cmds = links.slice(1);
 				try {
-					let dirs = firstKey.split('/'),
+					let route = firstKey.split('/'),
 						dir = this.actions,
 						main = dir[firstKey];
 					if (!firstKey.includes('/')) {
 						main(fisrtValue);
 					} else {
-						for (let p of dirs) {
-							let kDir = dir[p + '/'];
+						/*
+						 * NESTED ROUTER
+						 *
+						 * Features dynamic routes (starting with ":").
+						 * To create nesting, use an object instead of a function,
+						 * and add a "/" to the key.
+						 */
+						let dynamic = [];
+						for (let point of route) {
+							let isDyn = Object.keys(dir).find(e => e.startsWith(':'));
+							if (isDyn) {
+								dynamic.push(point);
+								point = isDyn;
+								if (point.endsWith('/'))
+									point = point.slice(0, -1);
+							}
+							let kDir = dir[point + '/'];
 							if (kDir)
 								dir = kDir;
 							else {
-								dir[p](fisrtValue);
+								if (dynamic.length)
+									fisrtValue = dynamic;
+								dir[point](fisrtValue);
 								break;
 							}
 						}
@@ -458,7 +472,13 @@ Intl.helper = function () {
 			return content;
 		},
 		pipe: (data, ...fns) => fns.reduce((v, fn) => fn(v), data),
-		pipeAsync: async (data, ...fns) => fns.reduce(async (v, fn) => fn(await v), await data),
+		async pipeAsync(data, ...fns) {
+			for (const fn of fns) {
+				let waiter = await data;
+				data = await fn(waiter);
+			}
+			return data;
+		},
 		form: {
 			/*
 			 * AUTOSAVING FORMS
